@@ -1,0 +1,61 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+   
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/gif" sizes="16*16">
+    {% block title %}
+    {% endblock title %}
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt='taskmate'></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="background-color:black;">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" style="outline: none;" href="{% url 'index' %}">Home&emsp;&emsp;&emsp;&emsp;</a>
+      <a class="nav-item nav-link" style="outline: none;" href="{% url 'todolist' %}">Todolist&emsp;&emsp;&emsp;&emsp;</a>
+      <!--<a class="nav-item nav-link" href="{% url 'contact' %}">Contact us&emsp;&emsp;&emsp;&emsp;</a>
+      <a class="nav-item nav-link" href="{% url 'about' %}">About us&emsp;&emsp;&emsp;&emsp;</a>-->
+      
+    </div>
+  </div>
+  {% if user.is_authenticated %}
+
+    <div class="form-inline my-2 my-lg-0">
+      <div class="p-2 mb-0.5 text-light" style="border-radius:40px;color:white;font-weight: bolder;font-size: 20px;background-color: #F0DF87;">&emsp;Logged in as &nbsp;{{ user.username }}&emsp;</div>&emsp;
+      <a href="{% url 'logout' %}"><button style="background-color:lightblue;color:white;" class="btn btn-outline-success my-2 my-sm-0" type="submit">&emsp;Logout&emsp;</button></a>
+    </div>
+
+  {% else %}
+    <a href="{% url 'login' %}"><button style="background-color:lightgreen;color:white;" class="btn btn-outline-success my-2 my-sm-0" type="submit">&emsp;Login&emsp;</button></a>&emsp;
+
+    <a href="{% url 'register' %}"><button style="background-color:lightblue;color:white;" class="btn btn-outline-success my-2 my-sm-0" type="submit">&emsp;Register&emsp;</button></a>
+     
+  {% endif %}
+</nav>
+
+{% block content %}
+{% endblock content %}
+<script>
+  AOS.init();
+</script>
+
+  </body>
+</html>
+
