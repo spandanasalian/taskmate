@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath app taskmate.wsgi
+web: gunicorn django_project.wsgi --log-file -
