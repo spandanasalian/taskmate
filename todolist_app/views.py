@@ -29,6 +29,8 @@ def delete_task(request,task_id):
     task=TaskList.objects.get(pk=task_id)
     if task.manage == request.user:
         task.delete()
+        messages.success(request,("Task Deleted!"))
+        return redirect('todolist') 
     else:
         messages.error(request,("Acess Restricted, You Are Not Allowed"))
     return redirect('todolist')  
@@ -53,6 +55,7 @@ def complete_task(request,task_id):
     if task.manage == request.user:
         task.done=True
         task.save()
+
     else:
         messages.error(request,("Acess Restricted, You Are Not Allowed"))
 
