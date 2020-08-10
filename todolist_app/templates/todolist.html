@@ -60,7 +60,7 @@
     
 {% if obj.done %}
     
-    <tr class="row" style="background-color:#f3f3f3">
+    <tr style="background-color:#f3f3f3">
           <td style="font-family: sans-serif;color:teal;font-weight: bolder;"><del>{{ obj.task }}</del></td>
           <td  style="border:none;"><a style="text-decoration:none;outline:none;" href="{% url 'pending_task' obj.id %}"><button type="button" style="background-color:#2F363F;font-size: 15px;font-weight: bolder;" class="btn btn-primary">&emsp;Mark as Task Pending&emsp;</button></a></td> <!--true false ,false true method-->
           <td style="border:none;"><a style="text-decoration:none;" href="{% url 'edit_task' obj.id %}"><button type="button" style="font-size: 15px;font-weight: bolder;color:white;" class="btn btn-warning">&emsp;Edit&emsp;</a></td></button>
