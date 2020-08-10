@@ -38,12 +38,14 @@
         <button type="submit" class="btn btn-primary col-lg-2" style="background-color:teal;height: 40px;">Add Task</button>
       
     </form>
-<br>
 
 
 <!-- On rows -->
-<table class="table text-center" style="border-collapse:collapse;border-radius: 5px 5px 0 0;overflow: hidden;box-shadow: 0 0 20px rgba(0,0,0,0.15);border-bottom: 2px solid #009879;">
-<tr style="background-color:teal;color:white;text-align:center;font-family:Segoe MDL2 Assets;font-size:25px;">
+ 
+  <div class="table-responsive">
+
+<table  class="table" style="border-collapse:collapse;border-radius: 5px 5px 0 0;overflow: hidden;box-shadow: 0 0 20px rgba(0,0,0,0.15);border-bottom: 2px solid #009879;width:100%;">
+<tr style="background-color:teal;color:white;text-align:center;font-family:Segoe MDL2 Assets;font-size:20px;">
 <th>Task</th>
 <th>Done</th>
 <th>Edit</th>
@@ -57,26 +59,29 @@
     
 {% if obj.done %}
     
-    <tr style="background-color:#f3f3f3">
+    <tr class="row" style="background-color:#f3f3f3">
           <td style="font-family: sans-serif;color:teal;font-weight: bolder;"><del>{{ obj.task }}</del></td>
-          <td style="border:none;"><a style="text-decoration:none;outline:none;" href="{% url 'pending_task' obj.id %}"><button type="button" style="background-color:#2F363F" class="btn btn-primary">&emsp;Mark as Task Pending&emsp;</button></a></td> <!--true false ,false true method-->
-          <td style="border:none;"><a style="text-decoration:none;" href="{% url 'edit_task' obj.id %}"><button type="button" class="btn btn-warning">&emsp;Edit&emsp;</a></td></button>
-          <td style="border:none;"><a style="text-decoration:none;" href="{% url 'delete_task' obj.id %}"><button type="button" style="background-color:#B83227" class="btn btn-danger">&emsp;Delete&emsp;</button></a></td>
+          <td  style="border:none;"><a style="text-decoration:none;outline:none;" href="{% url 'pending_task' obj.id %}"><button type="button" style="background-color:#2F363F;font-size: 15px;font-weight: bolder;" class="btn btn-primary">&emsp;Mark as Task Pending&emsp;</button></a></td> <!--true false ,false true method-->
+          <td style="border:none;"><a style="text-decoration:none;" href="{% url 'edit_task' obj.id %}"><button type="button" style="font-size: 15px;font-weight: bolder;color:white;" class="btn btn-warning">&emsp;Edit&emsp;</a></td></button>
+          <td  style="border:none;"><a style="text-decoration:none;" href="{% url 'delete_task' obj.id %}"><button type="button" style="background-color:#B83227;font-size: 15px;font-weight: bolder;" class="btn btn-danger">&emsp;Delete&emsp;</button></a></td>
         </tr>
     
     
     {% else %}
-    <tr  style="color:#3a8a9e;">
+    <tr   style="color:#3a8a9e;">
           <td style="font-family: sans-serif;color:teal;font-weight: bolder;">{{ obj.task }}</td>
-          <td style="border:none;"><a style="text-decoration:none;outline: none;" href="{% url 'complete_task' obj.id %}"><button type="button" style="background-color:#2F363F"class="btn btn-dark">&emsp;Mark as Completed&emsp;</button></a></td>
-          <td style="border:none;"><a style="text-decoration:none;" href="{% url 'edit_task' obj.id %}"><button type="button" class="btn btn-warning">&emsp;Edit&emsp;</button></a></td>
-          <td style="border:none;"> <a style="text-decoration:none;" href="{% url 'delete_task' obj.id %}"><button type="button" style="background-color:#B83227" class="btn btn-danger">&emsp;Delete&emsp;</button></a></td>
+          <td  style="border:none;"><a style="text-decoration:none;outline: none;" href="{% url 'complete_task' obj.id %}"><button type="button" style="background-color:#2F363F;font-size: 15px;font-weight: bolder;"class="btn btn-dark">&emsp;Mark as Completed&emsp;</button></a></td>
+          <td  style="border:none;"><a style="text-decoration:none;" href="{% url 'edit_task' obj.id %}"><button type="button" style="font-size: 15px;font-weight: bolder;color:white;" class="btn btn-warning">&emsp;Edit&emsp;</button></a></td>
+          <td  style="border:none;"> <a style="text-decoration:none;" href="{% url 'delete_task' obj.id %}"><button type="button" style="background-color:#B83227;font-size: 15px;font-weight: bolder;" class="btn btn-danger">&emsp;Delete&emsp;</button></a></td>
         </tr>
         {% endif %}
     {% endfor %}
 {% endif %}
 
 </table>
+</div>
+
+
   <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-end">
     <li class="page-item"><a class="page-link" href="?pg=1"><<</a>
